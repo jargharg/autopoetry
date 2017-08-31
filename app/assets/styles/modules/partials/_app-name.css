@@ -1,0 +1,7 @@
+.app-name {
+    position: absolute;
+    text-transform: uppercase;
+    bottom: 110%;
+    max-width: 100%;
+    color: $primary-color;
+}

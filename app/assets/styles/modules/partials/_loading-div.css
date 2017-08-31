@@ -1,0 +1,32 @@
+.loading-div {
+	height: 180px;
+	line-height: 180px;
+	text-align: center;
+	font-size: 1.5em;
+	span {
+		animation: loadingFade 1s infinite ease-in-out both;
+		&:first-child {
+			animation: none;
+		}
+		&:nth-child(2){
+			opacity: 1;
+			animation-delay: 0s;
+		}
+		&:nth-child(3){
+			opacity: 0.5;
+			animation-delay: 0.2s;
+		}
+		&:nth-child(4){
+			opacity: 0;
+			animation-delay: 0.4s;
+		}	
+	}
+}
+@keyframes loadingFade {
+	0%, 100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+}

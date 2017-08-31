@@ -1,0 +1,19 @@
+.poem-links {
+	padding: 20px 20px 100px;
+	font-size: 1rem;
+	@mixin atMedium {
+		font-size: 0.7rem;
+		padding: 20px 20px 0;
+		line-height: 1;
+	}
+	a {
+		text-decoration: none;
+		color: $primary-color;
+		opacity: 0.4;
+		transition: all 0.2s;
+		display: inline-block;
+		&:hover {
+			opacity: 1;
+		}
+	}
+}

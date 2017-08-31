@@ -1,0 +1,66 @@
+.edit-mode {
+	.poem-header {
+		@mixin atMedium {
+			border-bottom: 1px solid transparent;
+		}
+		&::after {
+			opacity: 0;
+		}
+		&__title {
+			padding-left: 50px;
+			@mixin atMedium {
+				padding-left: 40px;
+			}
+		}
+		& > #wholePoemRefresh {
+			width: 50px;
+			color: $secondary-color;
+			opacity: 1;
+		}
+	}
+	.poem-body {
+		background: none;
+		box-shadow: none;
+		& > li {
+			padding: 10px 35px 5px;
+			margin-bottom: 3px;
+			min-height: 40px;
+			user-select: none;
+			cursor: pointer;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+				0 1px 2px rgba(0, 0, 0, 0.24);
+			@mixin atMedium {
+				padding: 10px 20px 5px;
+			}
+			&:first-child {
+				margin-top: 3px;
+			}
+			&:last-child {
+				border-radius: 0;
+			}
+			&:focus {
+				color: white;
+				background: $secondary-color-l1;
+				.poem-line__nav {
+					@mixin belowMedium {
+						color: white;
+					}
+				}
+			}
+			&:last-child {
+				border: 1px solid transparent;
+			}
+
+			.poem-line {
+				&__text {
+					padding-right: 40px;
+				}
+				&__nav {
+					opacity: 1;
+					visibility: visible;
+					z-index: 2;
+				}
+			}
+		}
+	}
+}

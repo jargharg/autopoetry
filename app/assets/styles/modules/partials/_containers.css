@@ -1,0 +1,17 @@
+.container {
+	width: 100%;
+	max-width: 650px;
+	margin: 0 auto;
+	padding-top: 34px;
+	transition: opacity 0.5s;
+	@mixin atMedium {
+		border: none;
+		width: 80%;
+		margin-top: 80px;
+	}
+}
+
+.hidden {
+	opacity: 0;
+	visibility: hidden;
+}
