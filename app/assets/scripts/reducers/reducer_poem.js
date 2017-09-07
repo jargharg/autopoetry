@@ -1,9 +1,14 @@
-import { POEM_SEARCH } from "../actions"
+import { POEM_SEARCH, POEM_EDIT } from "../actions"
 
-export default function(state = {appState: "search"}, action) {
+export default function(state = { appState: "search" }, action) {
     switch (action.type) {
         case POEM_SEARCH:
-            return {...state, appState: "poem", searchTerm: action.payload}
+            return {
+                ...state,
+                appState: "poem",
+                title: action.payload.title,
+                data: action.payload.data
+            }
         default:
             return state
     }

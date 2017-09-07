@@ -1,16 +1,22 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { poemEdit } from "../actions"
+import { poemEdit, poemSearch } from "../actions"
 
 class PoemContainer extends Component {
     constructor() {
         super()
     }
 
-    poemEdit() {}
+    poemEdit() {
+        console.log("edit mode!!!")
+    }
 
     renderPoem() {
-        
+        if (!this.props.data) {
+            return this.renderLoadingDiv()
+        } else {
+            console.log("props", this.props)
+        }
     }
 
     renderLoadingDiv() {
@@ -25,6 +31,7 @@ class PoemContainer extends Component {
     }
 
     render() {
+        console.log("rendered")
         if (this.props.appState === "poem") {
             return (
                 <div className="poem-container">
@@ -36,14 +43,18 @@ class PoemContainer extends Component {
                             <i className="material-icons md-48">&#xE86A;</i>
                         </span>
                         <h1 className="poem-header__title">
-                            {" "}{this.props.searchTerm}
+                            {" "}{this.props.title}
                         </h1>
-                        <span className="poem-header__icon" id="poemEdit">
+                        <span
+                            className="poem-header__icon"
+                            id="poemEdit"
+                            onClick={this.poemEdit.bind(this)}
+                        >
                             <i className="material-icons md-48">mode_edit</i>
                         </span>
                     </div>
                     <ul className="poem-body">
-                        {this.props.data ? this.renderPoem() : this.renderLoadingDiv()}
+                        {this.renderPoem()}
                     </ul>
                 </div>
             )
@@ -54,21 +65,20 @@ class PoemContainer extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state)
     return {
         appState: state.poem.appState,
-        searchTerm: state.poem.searchTerm,
+        title: state.poem.title,
         data: state.poem.data
     }
 }
 
-export default connect(mapStateToProps, { poemEdit })(PoemContainer)
+export default connect(mapStateToProps, { poemEdit, poemSearch })(PoemContainer)
 
+///////to be coded up top
 class Poem {
     constructor() {
         this.currentPoemData = {}
-        this.gUrl =
-            "https://content.guardianapis.com/search?show-fields=body&q="
-        this.gKey = "&api-key=2c7e590d-dde8-498a-b351-b008c42edf52"
         this.poemBody = $(".poem-body")
         this.poemControls = new PoemControls(this)
         this.shareLinks = new ShareLinks()

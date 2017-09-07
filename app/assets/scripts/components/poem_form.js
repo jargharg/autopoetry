@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { poemSearch } from "../actions"
+import { poemSearch, fetchData } from "../actions"
 
 class PoemForm extends Component {
     constructor() {
