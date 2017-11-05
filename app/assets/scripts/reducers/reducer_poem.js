@@ -3,7 +3,7 @@ import {
     POEM_LOADING,
     POEM_EDIT,
     POEM_REFRESH,
-    UNDO_REDO
+    HISTORY_EDIT
 } from "../actions"
 
 export default function(state = { appState: "search" }, action) {
@@ -34,7 +34,7 @@ export default function(state = { appState: "search" }, action) {
                 chosenLines: action.payload.chosenLines,
                 history: {prev: [...state.history.prev, action.payload.previousLines], next: []}
             }
-        case UNDO_REDO:
+        case HISTORY_EDIT:
             return {
                 ...state,
                 chosenLines: action.payload.newChosenLines,

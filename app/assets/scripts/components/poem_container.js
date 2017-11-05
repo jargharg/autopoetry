@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { editPoem, poemSearch, refreshLine, refreshPoem, undo, redo } from "../actions"
+import { editPoem, poemSearch, refreshLine, refreshPoem, editHistory } from "../actions"
 import PoemLine from "./poem_line"
 
 class PoemContainer extends Component {
@@ -100,7 +100,7 @@ class PoemContainer extends Component {
                                     "poem-header__icon" +
                                     (this.state.undoVis ? "" : " hidden")
                                 }
-                                onClick={() => this.props.undo()}
+                                onClick={() => this.props.editHistory("undo")}
                             >
                                 <i className="material-icons md-48">undo</i>
                             </span>
@@ -109,7 +109,7 @@ class PoemContainer extends Component {
                                     "poem-header__icon" +
                                     (this.state.redoVis ? "" : " hidden")
                                 }
-                                onClick={() => this.props.redo()}
+                                onClick={() => this.props.editHistory("redo")}
                             >
                                 <i className="material-icons md-48">redo</i>
                             </span>&nbsp;
@@ -149,6 +149,5 @@ export default connect(mapStateToProps, {
     poemSearch,
     refreshLine,
     refreshPoem,
-    undo,
-     redo
+    editHistory
 })(PoemContainer)
