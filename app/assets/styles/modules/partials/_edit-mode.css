@@ -24,7 +24,7 @@
 		background: none;
 		box-shadow: none;
 		& > li {
-			padding: 10px 35px 5px;
+			padding: 5px 50px 5px 20px;
 			margin-bottom: 3px;
 			min-height: 40px;
 			user-select: none;
@@ -40,14 +40,8 @@
 			&:last-child {
 				border-radius: 0;
 			}
-			&:focus {
-				color: white;
-				background: $secondary-color-l1;
-				.poem-line__nav {
-					@mixin belowMedium {
-						color: white;
-					}
-				}
+			&:active {
+				animation: pulse 0.3s alternate;
 			}
 			&:last-child {
 				border: 1px solid transparent;
@@ -57,12 +51,21 @@
 				&__text {
 					padding-right: 40px;
 				}
-				&__nav {
+				&__refresh {
 					opacity: 1;
 					visibility: visible;
 					z-index: 2;
 				}
 			}
 		}
+	}
+}
+@keyframes pulse {
+	from {
+		background: white;
+	}
+	to {
+		color: white;
+		background: $secondary-color-l1;
 	}
 }

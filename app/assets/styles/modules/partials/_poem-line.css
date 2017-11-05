@@ -1,0 +1,54 @@
+.poem-line {
+    padding: 0 20px;
+    line-height: 1.5;
+    list-style: none;
+    position: relative;
+    min-height: 10px;
+    transition: all 0.3s, box-shadow 0s;
+    background-color: #fff;
+    outline: none;
+
+    &:first-child {
+        @mixin atMedium {
+            padding-top: 20px;
+        }
+    }
+    &:last-child {
+        padding-bottom: 20px;
+        @mixin atMedium {
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+    }
+    .poem-line {
+        &__text {
+            margin-left: 1em;
+            text-indent: -1em;
+            display: block;
+        }
+        &__refresh {
+            color: $secondary-color;
+            cursor: pointer;
+            display: inline-block;
+            height: 100%;
+            opacity: 0;
+            position: absolute;
+            right: 10px;
+            top: 0;
+            transition: 0.2s;
+            user-select: none;
+            visibility: hidden;
+            width: 40px;
+
+            @mixin atMedium {
+                right: -45px;
+            }
+            i.material-icons {
+                font-size: 40px;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+}
