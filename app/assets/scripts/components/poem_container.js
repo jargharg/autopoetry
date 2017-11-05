@@ -1,7 +1,15 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { editPoem, poemSearch, refreshLine, refreshPoem, editHistory } from "../actions"
+import {
+    editPoem,
+    poemSearch,
+    refreshLine,
+    refreshPoem,
+    editHistory,
+    shareLink
+} from "../actions"
 import PoemLine from "./poem_line"
+import ShareLinks from "./share_links"
 
 class PoemContainer extends Component {
     constructor() {
@@ -125,6 +133,12 @@ class PoemContainer extends Component {
                         </span>
                     </div>
                     <ul className="poem-body">{this.renderPoem()}</ul>
+                    <ShareLinks
+                        onClick={e => {
+                            e.preventDefault()
+                            shareLink(this.props.lines, this.props.chosenLines)
+                        }}
+                    />
                 </div>
             )
         } else {
@@ -140,7 +154,8 @@ function mapStateToProps(state) {
         lines: state.poem.lines,
         chosenLines: state.poem.chosenLines,
         history: state.poem.history,
-        editMode: state.poem.editMode
+        editMode: state.poem.editMode,
+        escapedText: state.poem.escapedText
     }
 }
 
@@ -149,5 +164,6 @@ export default connect(mapStateToProps, {
     poemSearch,
     refreshLine,
     refreshPoem,
-    editHistory
+    editHistory,
+    shareLink
 })(PoemContainer)

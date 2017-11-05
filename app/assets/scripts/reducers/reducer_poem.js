@@ -3,7 +3,8 @@ import {
     POEM_LOADING,
     POEM_EDIT,
     POEM_REFRESH,
-    HISTORY_EDIT
+    HISTORY_EDIT,
+    SHARE
 } from "../actions"
 
 export default function(state = { appState: "search" }, action) {
@@ -39,6 +40,11 @@ export default function(state = { appState: "search" }, action) {
                 ...state,
                 chosenLines: action.payload.newChosenLines,
                 history: action.payload.newHistory
+            }
+        case SHARE:
+            return {
+                ...state,
+                escapedText: action.payload.escapedText
             }
         default:
             return state

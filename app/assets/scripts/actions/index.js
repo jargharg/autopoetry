@@ -8,9 +8,43 @@ export const POEM_EDIT = "poem_edit"
 export const POEM_REFRESH = "poem_refresh"
 export const LINE_REFRESH = "line_refresh"
 export const HISTORY_EDIT = "history_edit"
+export const SHARE = "share"
 
 const ROOT_URL = "https://content.guardianapis.com/search?show-fields=body&q="
 const API_KEY = "&api-key=2c7e590d-dde8-498a-b351-b008c42edf52"
+
+export function editHistory(direction) {
+    return (dispatch, getState) => {
+        console.log(direction)
+        const currentPoem = getState().poem
+        const currentChosenLines = currentPoem.chosenLines
+        let prev, next, newChosenLines
+
+        if (direction === "undo") {
+            next = [currentChosenLines, ...currentPoem.history.next]
+            prev = currentPoem.history.prev
+            newChosenLines = prev.pop()
+        } else if (direction === "redo") {
+            prev = [...currentPoem.history.prev, currentChosenLines]
+            next = currentPoem.history.next
+            newChosenLines = next.shift()
+        }
+
+        dispatch({
+            type: HISTORY_EDIT,
+            payload: {
+                newChosenLines,
+                newHistory: { prev, next }
+            }
+        })
+    }
+}
+
+export function editPoem() {
+    return {
+        type: POEM_EDIT
+    }
+}
 
 export function poemSearch(input) {
     return dispatch => {
@@ -70,36 +104,16 @@ export function refreshPoem() {
     }
 }
 
-export function editPoem() {
+export function shareLink(lines, chosenLines) {
+    const escapedText = chosenLines.map(line => {
+        return lines[line]
+    })
+
+    console.log(escapedText)
+
     return {
-        type: POEM_EDIT
-    }
-}
-
-export function editHistory(direction) {
-    return (dispatch, getState) => {
-        console.log(direction)
-        const currentPoem = getState().poem
-        const currentChosenLines = currentPoem.chosenLines
-        let prev, next, newChosenLines
-
-        if (direction === "undo") {
-            next = [currentChosenLines, ...currentPoem.history.next]
-            prev = currentPoem.history.prev
-            newChosenLines = prev.pop()
-        } else if (direction === "redo") {
-            prev = [...currentPoem.history.prev, currentChosenLines]
-            next = currentPoem.history.next
-            newChosenLines = next.shift()
-        }
-
-        dispatch({
-            type: HISTORY_EDIT,
-            payload: {
-                newChosenLines,
-                newHistory: { prev, next }
-            }
-        })
+        type: SHARE,
+        payload: { escapedText }
     }
 }
 
