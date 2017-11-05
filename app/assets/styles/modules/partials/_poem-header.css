@@ -33,14 +33,24 @@
 			font-size: 2em;
 		}
 	}
-	&__icon {
+	&__controls {
 		position: absolute;
 		top: 0;
+		&--left {
+			left: 15px;
+			width: 0;
+			overflow: hidden;
+		}
+		&--right {
+			right: 15px;
+		}
+	}
+	&__icon {
 		height: 100%;
 		cursor: pointer;
 		user-select: none;
-		transition: all 0.2s ease-out;
 		opacity: 0.2;
+		transition: all 0.2s ease-out;
 		&:hover {
 			opacity: 1;
 		}
@@ -52,14 +62,6 @@
 				font-size: 40px;
 				line-height: 56px;
 			}
-		}
-		&#poemEdit {
-			right: 15px;
-		}
-		&#wholePoemRefresh {
-			left: 15px;
-			width: 0;
-			overflow: hidden;
 		}
 	}
 }

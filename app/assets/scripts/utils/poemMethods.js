@@ -22,7 +22,7 @@ export function parseData(data) {
 
     textContent.forEach(str => {
         str = str.trim()
-        if (str.length > 2 && str != "Photograph" && str != "'*") {
+        if (tidyLine(str)) {
             if (str.length > 70) {
                 str = str.replace(/.{50}\S*\s+/g, "$&@").split(/\s+@/)
                 tidyContent.push(...str)
@@ -68,16 +68,28 @@ export function chooseLines(lines) {
         randomArray.push(randomLineIndex(lines))
     }
 
-    const poemArray = randomArray.map(x => {
-        let lineObject = {}
-        lineObject.index = x
-        lineObject.content = lines[x]
-        return lineObject
-    })
+    const poemArray = randomArray // this can have more exciting methods in the future
 
     return poemArray
 }
 
-function randomLineIndex(array) {
+export function randomLineIndex(array) {
     return Math.floor(Math.random() * array.length)
+}
+
+//////////////////////////////////
+//      PRIVATE FUNCTIONS       //
+//////////////////////////////////
+
+function tidyLine(line) {
+    if (
+        line.length > 2 &&
+        line != "Photograph" &&
+        line != "Related" &&
+        line != "'*"
+    ) {
+        return line
+    } else {
+        return false
+    }
 }

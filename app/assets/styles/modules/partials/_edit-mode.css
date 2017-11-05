@@ -12,10 +12,12 @@
 				padding-left: 40px;
 			}
 		}
-		& > #wholePoemRefresh {
+		&__controls--left {
 			width: 50px;
 			color: $secondary-color;
-			opacity: 1;
+			#wholePoemRefresh {
+				opacity: 1;
+			}
 		}
 	}
 	.poem-body {

@@ -1,4 +1,10 @@
-import { POEM_SEARCH, POEM_EDIT, POEM_LOADING } from "../actions"
+import {
+    POEM_SEARCH,
+    POEM_LOADING,
+    POEM_EDIT,
+    POEM_REFRESH,
+    UNDO_REDO
+} from "../actions"
 
 export default function(state = { appState: "search" }, action) {
     switch (action.type) {
@@ -8,12 +14,31 @@ export default function(state = { appState: "search" }, action) {
                 appState: "poem",
                 title: action.payload.title,
                 lines: action.payload.lines,
-                chosenLines: action.payload.chosenLines
+                chosenLines: action.payload.chosenLines,
+                history: {prev: [], next: []},
+                editMode: false
             }
         case POEM_LOADING:
             return {
                 ...state,
                 appState: "loading"
+            }
+        case POEM_EDIT:
+            return {
+                ...state,
+                editMode: !state.editMode
+            }
+        case POEM_REFRESH:
+            return {
+                ...state,
+                chosenLines: action.payload.chosenLines,
+                history: {prev: [...state.history.prev, action.payload.previousLines], next: []}
+            }
+        case UNDO_REDO:
+            return {
+                ...state,
+                chosenLines: action.payload.newChosenLines,
+                history: action.payload.newHistory
             }
         default:
             return state
