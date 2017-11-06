@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { poemSearch } from "../actions"
 
-class PoemForm extends Component {
+class InputForm extends Component {
     constructor() {
         super()
     }
@@ -59,49 +59,4 @@ function mapStateToProps(state) {
     return { appState: state.poem.appState }
 }
 
-export default connect(mapStateToProps, { poemSearch })(PoemForm)
-
-// class PoemInput {
-//     constructor(poem) {
-//         this.poem = poem
-//         this.inputButton = $("#inputSubmit")
-//         this.inputText = $("#inputText")
-//         this.events(this.firstWordSearch)
-//         this.inputText.focus()
-//     }
-
-//     newWordSearch() {
-//         if (this.inputText.val() != "") {
-//             this.poem.newPoem(this.inputText.val())
-//             this.inputText
-//                 .val("")
-//                 .removeClass("input-mobile")
-//                 .parent()
-//                 .removeClass("poem-form__expanded")
-//             this.inputButton.blur()
-//             $(".edit-mode").removeClass("edit-mode")
-//             $("#poemEdit .material-icons").text("mode_edit")
-//         } else {
-//             this.inputText
-//                 .addClass("input-mobile")
-//                 .focus()
-//                 .parent()
-//                 .addClass("poem-form__expanded")
-//         }
-//     }
-
-//     firstWordSearch() {
-//         if (this.inputText.val() != "") {
-//             $(".container").removeClass("hidden")
-//             $(".app-name").addClass("hidden")
-//             $(".poem-form")
-//                 .removeClass("poem-form__init")
-//                 .addClass("poem-form__bottom")
-//             $(".top-nav__name").removeClass("hidden")
-//             this.events(this.newWordSearch)
-//             this.newWordSearch()
-//         } else {
-//             this.inputText.focus()
-//         }
-//     }
-// }
+export default connect(mapStateToProps, { poemSearch })(InputForm)
