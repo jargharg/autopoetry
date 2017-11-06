@@ -12,6 +12,8 @@ export const HISTORY_EDIT = "history_edit"
 const ROOT_URL = "https://content.guardianapis.com/search?show-fields=body&q="
 const API_KEY = "&api-key=2c7e590d-dde8-498a-b351-b008c42edf52"
 
+// @TODO put all actions into modules
+
 export function editHistory(direction) {
     return (dispatch, getState) => {
         console.log(direction)
@@ -55,10 +57,11 @@ export function poemSearch(input) {
         })
 
         const title = input.replace(/\?/g, "")
-        let APIterm = input.replace(/ /g, " AND ")
         let parsedData = {}
 
+        // @TODO refactor - could use a recursive function
         // call to API with AND search term
+        let APIterm = input.replace(/ /g, " AND ")
         return axios.get(ROOT_URL + APIterm + API_KEY).then(function(response) {
             if (Number(response.data.response.total) > 0) {
                 parsedData = parseData(response.data)
