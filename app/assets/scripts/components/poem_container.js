@@ -5,8 +5,7 @@ import {
     poemSearch,
     refreshLine,
     refreshPoem,
-    editHistory,
-    shareLink
+    editHistory
 } from "../actions"
 import PoemLine from "./poem_line"
 import ShareLinks from "./share_links"
@@ -134,10 +133,9 @@ class PoemContainer extends Component {
                     </div>
                     <ul className="poem-body">{this.renderPoem()}</ul>
                     <ShareLinks
-                        onClick={e => {
-                            e.preventDefault()
-                            shareLink(this.props.lines, this.props.chosenLines)
-                        }}
+                        title={this.props.title}
+                        lines={this.props.lines}
+                        chosenLines={this.props.chosenLines}
                     />
                 </div>
             )
@@ -154,8 +152,7 @@ function mapStateToProps(state) {
         lines: state.poem.lines,
         chosenLines: state.poem.chosenLines,
         history: state.poem.history,
-        editMode: state.poem.editMode,
-        escapedText: state.poem.escapedText
+        editMode: state.poem.editMode
     }
 }
 
@@ -164,6 +161,5 @@ export default connect(mapStateToProps, {
     poemSearch,
     refreshLine,
     refreshPoem,
-    editHistory,
-    shareLink
+    editHistory
 })(PoemContainer)

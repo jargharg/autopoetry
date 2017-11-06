@@ -3,8 +3,7 @@ import {
     POEM_LOADING,
     POEM_EDIT,
     POEM_REFRESH,
-    HISTORY_EDIT,
-    SHARE
+    HISTORY_EDIT
 } from "../actions"
 
 export default function(state = { appState: "search" }, action) {
@@ -16,7 +15,7 @@ export default function(state = { appState: "search" }, action) {
                 title: action.payload.title,
                 lines: action.payload.lines,
                 chosenLines: action.payload.chosenLines,
-                history: {prev: [], next: []},
+                history: { prev: [], next: [] },
                 editMode: false
             }
         case POEM_LOADING:
@@ -33,18 +32,16 @@ export default function(state = { appState: "search" }, action) {
             return {
                 ...state,
                 chosenLines: action.payload.chosenLines,
-                history: {prev: [...state.history.prev, action.payload.previousLines], next: []}
+                history: {
+                    prev: [...state.history.prev, action.payload.previousLines],
+                    next: []
+                }
             }
         case HISTORY_EDIT:
             return {
                 ...state,
                 chosenLines: action.payload.newChosenLines,
                 history: action.payload.newHistory
-            }
-        case SHARE:
-            return {
-                ...state,
-                escapedText: action.payload.escapedText
             }
         default:
             return state
