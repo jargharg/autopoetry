@@ -1,10 +1,14 @@
 .poem-links {
-	padding: 20px 20px 100px;
+	padding: 10px 10px;
 	font-size: 1rem;
 	@mixin atMedium {
 		font-size: 0.7rem;
-		padding: 20px 20px 0;
+		padding: 10px 30px;
 		line-height: 1;
+		position: absolute;
+		top: 100%;
+		width: 100%;
+		left: 0px;
 	}
 	a {
 		text-decoration: none;

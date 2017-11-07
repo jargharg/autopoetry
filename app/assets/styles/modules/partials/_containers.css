@@ -1,13 +1,43 @@
+#app {
+	height: 100%;
+}
+
 .container {
 	width: 100%;
-	max-width: 650px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	margin: 0 auto;
-	padding-top: 34px;
+	padding: 40px 0 0;
 	transition: opacity 0.5s;
+	border-left: 1px solid rgba(0, 0, 0, 0.05);
+	border-right: 1px solid rgba(0, 0, 0, 0.05);
 	@mixin atMedium {
-		border: none;
-		width: 80%;
-		margin-top: 80px;
+		max-width: 500px;
+		padding: 0 0 100px;
+	}
+}
+
+.poem-container {
+	width: 100%;
+	background-color: $bg-color;
+	padding: 10px;
+	position: relative;
+	&::before,
+	&::after {
+		content: " ";
+		border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+		height: 1px;
+		width: 500%;
+		position: absolute;
+		left: -200%;
+	}
+	&::before {
+		top: 0;
+	}
+	&::after {
+		bottom: 0;
 	}
 }
 

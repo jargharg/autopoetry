@@ -2,7 +2,6 @@
 @import "modules/global/_variables.css";
 @import "modules/global/_mixins.css";
 @import "modules/partials/_body.css";
-@import "modules/partials/_app-name.css";
 @import "modules/partials/_top-nav.css";
 @import "modules/partials/_containers.css";
 @import "modules/partials/_poem-header.css";
