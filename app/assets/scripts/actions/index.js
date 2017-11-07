@@ -56,19 +56,21 @@ export function poemSearch(input) {
             }
         })
 
-        const title = input.replace(/\?/g, "")
+        const title = input
+
+        const safeInput = input.replace(/\?|!/g, "")
         let parsedData = {}
 
         // @TODO refactor - could use a recursive function
         // call to API with AND search term
-        let APIterm = input.replace(/ /g, " AND ")
+        let APIterm = safeInput.replace(/ /g, " AND ")
         return axios.get(ROOT_URL + APIterm + API_KEY).then(function(response) {
             if (Number(response.data.response.total) > 0) {
                 parsedData = parseData(response.data)
                 dispatch(poemPayload(title, parsedData))
             } else {
                 // if no results for AND search, try OR
-                APIterm = APIterm.replace(/ AND /g, " OR ")
+                APIterm = safeInput.replace(/ /g, " OR ")
                 axios
                     .get(ROOT_URL + APIterm + API_KEY)
                     .then(function(response) {
