@@ -12,7 +12,6 @@ class PoemHeader extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
         if (nextProps.editMode) {
             this.setState({ editModeIcon: "done" })
             if (nextProps.history.prev.length > 0) {
