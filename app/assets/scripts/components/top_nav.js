@@ -11,15 +11,15 @@ class TopNav extends Component {
         document.addEventListener("click", e => {
             e.stopPropagation()
             this.state.expanded === true
-                ? this.setState({expanded: false})
+                ? this.setState({ expanded: false })
                 : null
         })
     }
 
     infoToggle() {
         this.state.expanded === true
-            ? this.setState({expanded: false})
-            : this.setState({expanded: true})
+            ? this.setState({ expanded: false })
+            : this.setState({ expanded: true })
     }
 
     render() {
@@ -50,7 +50,7 @@ class TopNav extends Component {
                         See it on Github
                     </a>
                 </div>
-                <div className="top-nav__name hidden">AUTOPOETRY</div>
+                <div className="top-nav__name">AUTOPOETRY</div>
                 <div className="top-nav__info-icon">
                     <i className="material-icons">info_outline</i>
                 </div>
