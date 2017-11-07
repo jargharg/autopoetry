@@ -7,7 +7,7 @@ class InputForm extends Component {
         super()
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.setState({ input: "" })
     }
 
@@ -25,29 +25,27 @@ class InputForm extends Component {
     render() {
         if (this.props.appState === "search") {
             return (
-                <div className="poem-form poem-form__init">
-                    <img
-                        className="app-name"
-                        src="assets/images/autopoetry-title-slate.png"
-                        alt="AUTOPOETRY"
-                    />
+                <form
+                    className="input-form"
+                    onSubmit={e => {
+                        e.preventDefault()
+                        this.submitPoem.call(this)
+                    }}
+                >
                     <input
-                        id="inputText"
                         type="text"
                         placeholder="Enter a phrase"
                         autoComplete="off"
-                        name="wordSearch"
                         onChange={this.inputChange.bind(this)}
-                        onKeyPress={e =>
-                            e.which == 13 ? this.submitPoem.call(this) : null}
                     />
                     <input
-                        id="inputSubmit"
                         type="submit"
                         value="Make a new poem"
-                        onClick={this.submitPoem.bind(this)}
+                        className={
+                            this.state.input ? "" : "input-form__submit-hidden"
+                        }
                     />
-                </div>
+                </form>
             )
         } else {
             return <div className="hidden" />
