@@ -6,16 +6,11 @@ var gulp = require("gulp"),
 	uglify = require("gulp-uglify"),
 	browserSync = require("browser-sync").create()
 
-gulp.task("previewDocs", function() {
-	browserSync.init({
-		notify: false,
-		server: {
-			baseDir: "docs"
-		}
-	})
+gulp.task("apply-prod-environment", function() {
+	return process.env.NODE_ENV = "production"
 })
 
-gulp.task("deleteDocsFolder", function() {
+gulp.task("deleteDocsFolder", ["apply-prod-environment"], function() {
 	return del("./docs")
 })
 
@@ -63,4 +58,4 @@ gulp.task("usemin", ["styles", "scripts"], function() {
 		.pipe(gulp.dest("./docs"))
 })
 
-gulp.task("build", ["deleteDocsFolder", "useminTrigger", "copyGeneralFiles"])
+gulp.task("build", ["apply-prod-environment", "deleteDocsFolder", "useminTrigger", "copyGeneralFiles"])

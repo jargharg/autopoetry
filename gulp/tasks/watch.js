@@ -2,6 +2,10 @@ var gulp = require("gulp"),
 	watch = require("gulp-watch"),
 	browserSync = require("browser-sync").create()
 
+gulp.task("apply-dev-environment", function() {
+	return process.env.NODE_ENV = "development"
+})
+
 gulp.task("watch", ["scriptsRefresh", "cssInject"], function() {
 	browserSync.init({
 		notify: false,
@@ -29,6 +33,6 @@ gulp.task("cssInject", ["styles"], function() {
 		.pipe(browserSync.stream())
 })
 
-gulp.task("scriptsRefresh", ["scripts"], function() {
+gulp.task("scriptsRefresh", ["apply-dev-environment", "scripts"], function() {
 	browserSync.reload()
 })
