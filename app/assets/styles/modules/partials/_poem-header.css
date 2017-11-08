@@ -2,7 +2,6 @@
 	position: relative;
 	color: $primary-color;
 	padding: 0 20px 10px;
-	transition: 0.2s all;
 
 	&__title {
 		font-size: 1.5rem;
