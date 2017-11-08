@@ -36,6 +36,7 @@ class InputForm extends Component {
                         type="text"
                         placeholder="Enter a phrase"
                         autoComplete="off"
+                        autoFocus
                         onChange={this.inputChange.bind(this)}
                     />
                     <input
