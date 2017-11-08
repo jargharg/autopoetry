@@ -2,40 +2,50 @@
     line-height: 1.5;
     list-style: none;
     position: relative;
-    transition: all 0.3s;
+    transition: 0.2s all;
     outline: none;
     &__text {
         display: block;
-        width: 100%;
         min-height: 10px;
         height: 100%;
         transition: 0.2s all;
-        padding: 0 20px;
+        padding: 0 10px;
+        margin: 0 10px;
     }
     &__refresh {
-        text-align: right;
+        text-align: left;
         color: $secondary-color;
         cursor: pointer;
         display: inline-block;
         height: 100%;
         opacity: 0;
         position: absolute;
-        right: 0px;
+        left: 10px;
         top: 0;
         transition: 0.2s all;
         user-select: none;
         visibility: hidden;
-        width: 40px;
+        width: 50px;
+
+        &:hover {
+            @mixin belowMedium {
+                color: white;
+            }
+            & ~ .poem-line__text {
+                background: $secondary-color;
+                color: white;
+            }
+        }
 
         @mixin atMedium {
-            right: -30px;
+            left: -40px;
             &::after {
                 content: " ";
                 border-bottom: 2px solid $secondary-color;
-                width: 26px;
+                width: 22px;
                 position: absolute;
                 top: Calc(50% - 1px);
-                left: 10px;
+                right: 0;
             }
         }
         i.material-icons {
@@ -46,8 +56,7 @@
         }
     }
     @mixin atMedium {
-        &::before,
-        &::after {
+        &::before {
             content: " ";
             position: absolute;
             border-top: 2px solid $secondary-color;
@@ -57,14 +66,8 @@
             bottom: 0;
             opacity: 0;
             transition: 0.2s all;
-        }
-        &::before {
             border-left: 2px solid $secondary-color;
-            left: 0px;
-        }
-        &::after {
-            border-right: 2px solid $secondary-color;
-            right: 0px;
+            left: 10px;
         }
     }
 }

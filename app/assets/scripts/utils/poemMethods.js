@@ -60,7 +60,7 @@ export function shuffle(array) {
 }
 
 export function chooseLines(lines) {
-    const poemLength = 3 + Math.floor(Math.random() * 10)
+    const poemLength = 2 + Math.floor(Math.random() * 8)
 
     let randomArray = []
 

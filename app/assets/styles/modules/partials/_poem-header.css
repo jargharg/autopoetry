@@ -16,37 +16,4 @@
 			font-size: 2em;
 		}
 	}
-	&__controls {
-		position: absolute;
-		top: 0;
-		&--left {
-			left: 15px;
-			width: 0;
-			overflow: hidden;
-			transition: 0.2s width;
-			color: $secondary-color;
-		}
-		&--right {
-			right: 15px;
-		}
-	}
-	&__icon {
-		height: 100%;
-		cursor: pointer;
-		user-select: none;
-		opacity: 0.2;
-		transition: all 0.2s ease-out;
-		&:hover {
-			opacity: 1;
-		}
-		i.material-icons {
-			height: 100%;
-			font-size: 40px;
-			line-height: 47px;
-			@mixin atMedium {
-				font-size: 36px;
-				line-height: 36px;
-			}
-		}
-	}
 }

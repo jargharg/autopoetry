@@ -1,8 +1,8 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { editPoem, refreshLine } from "../actions"
+import { editPoem, refreshLine, refreshPoem } from "../actions"
 import PoemLine from "./poem_line"
-import ShareLinks from "./share_links"
+import PoemControls from "./poem_controls"
 import PoemHeader from "./poem_header"
 
 class PoemContainer extends Component {
@@ -52,8 +52,17 @@ class PoemContainer extends Component {
                     }
                 >
                     <PoemHeader />
-                    <ul className="poem-body">{this.renderPoem()}</ul>
-                    <ShareLinks
+                    <ul className="poem-body">
+                        <div
+                            className="poem-body__refresh"
+                            id="wholePoemRefresh"
+                            onClick={() => this.props.refreshPoem()}
+                        >
+                            <i className="material-icons md-24">cached</i>
+                        </div>
+                        {this.renderPoem()}
+                    </ul>
+                    <PoemControls
                         title={this.props.title}
                         lines={this.props.lines}
                         chosenLines={this.props.chosenLines}
@@ -78,5 +87,6 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
     editPoem,
-    refreshLine
+    refreshLine,
+    refreshPoem
 })(PoemContainer)

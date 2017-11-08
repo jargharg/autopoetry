@@ -22,7 +22,7 @@
 .poem-container {
 	width: 100%;
 	background-color: $bg-color;
-	padding: 10px;
+	padding: 20px 0;
 	position: relative;
 	&::before,
 	&::after {

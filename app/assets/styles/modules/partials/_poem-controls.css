@@ -1,9 +1,11 @@
-.poem-links {
+.poem-controls {
 	padding: 10px 10px;
 	font-size: 1rem;
 	@mixin atMedium {
+		display: flex;
 		font-size: 0.7rem;
-		padding: 10px 30px;
+		justify-content: space-between;
+		padding: 10px 20px;
 		line-height: 1;
 		position: absolute;
 		top: 100%;
@@ -16,6 +18,17 @@
 		opacity: 0.4;
 		transition: all 0.2s;
 		display: inline-block;
+		&:hover {
+			opacity: 1;
+		}
+	}
+
+	&__icon {
+		height: 100%;
+		cursor: pointer;
+		user-select: none;
+		opacity: 0.4;
+		transition: all 0.2s ease-out;
 		&:hover {
 			opacity: 1;
 		}
