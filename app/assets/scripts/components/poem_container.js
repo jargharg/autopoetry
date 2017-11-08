@@ -51,7 +51,7 @@ class PoemContainer extends Component {
                         (this.props.editMode ? " edit-mode" : "")
                     }
                 >
-                    <PoemHeader />
+                    <PoemHeader title={this.props.title} />
                     <ul className="poem-body">
                         <div
                             className="poem-body__refresh"
