@@ -1,51 +1,33 @@
-// import React from "react"
-
-// const PoemControls = ({ title, lines, chosenLines }) => (
-//     <div className="poem-links">
-//         <a
-//             className="poem-links--share"
-//             href={shareLink(title, lines, chosenLines)}
-//         >
-//             <i className="material-icons md-48">share</i>
-//         </a>
-//     </div>
-// )
-
-// export default PoemControls
-
-/////////
-
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { editPoem, editHistory } from "../actions"
+import { editPoem, editHistory, newPoem } from "../actions"
 
 class PoemControls extends Component {
     componentWillMount() {
         this.setState({
             editModeIcon: "mode_edit",
-            undoVis: false,
-            redoVis: false
+            newPoemClass: "",
+            undoClass: " poem-controls__icon--hidden",
+            redoClass: " poem-controls__icon--hidden"
         })
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.editMode) {
             this.setState({ editModeIcon: "done" })
-            if (nextProps.history.prev.length > 0) {
-                this.setState({ undoVis: true })
-            } else {
-                this.setState({ undoVis: false })
-            }
-            if (nextProps.history.next.length > 0) {
-                this.setState({ redoVis: true })
-            } else {
-                this.setState({ redoVis: false })
-            }
+            this.setState({ newPoemClass: " poem-controls__icon--hidden" })
+            nextProps.history.prev.length > 0
+                ? this.setState({ undoClass: "" })
+                : this.setState({ undoClass: " poem-controls__icon--hidden" })
+            nextProps.history.next.length > 0
+                ? this.setState({ redoClass: "" })
+                : this.setState({ redoClass: " poem-controls__icon--hidden" })
         } else {
             this.setState({
                 editModeIcon: "mode_edit",
-                undoVis: false,
-                redoVis: false
+                newPoemClass: "",
+                undoClass: " poem-controls__icon--hidden",
+                redoClass: " poem-controls__icon--hidden"
             })
         }
     }
@@ -65,19 +47,21 @@ class PoemControls extends Component {
                 </a>
                 <span>
                     <span
-                        className={
-                            "poem-controls__icon" +
-                            (this.state.undoVis ? "" : " hidden")
-                        }
+                        className={"poem-controls__icon" + this.state.undoClass}
                         onClick={() => this.props.editHistory("undo")}
                     >
                         <i className="material-icons md-48">undo</i>
                     </span>
                     <span
                         className={
-                            "poem-controls__icon" +
-                            (this.state.redoVis ? "" : " hidden")
+                            "poem-controls__icon" + this.state.newPoemClass
                         }
+                        onClick={() => this.props.newPoem()}
+                    >
+                        <i className="material-icons md-48">refresh</i>
+                    </span>
+                    <span
+                        className={"poem-controls__icon" + this.state.redoClass}
                         onClick={() => this.props.editHistory("redo")}
                     >
                         <i className="material-icons md-48">redo</i>
@@ -109,7 +93,8 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
     editPoem,
-    editHistory
+    editHistory,
+    newPoem
 })(PoemControls)
 
 //////////////////////////////////

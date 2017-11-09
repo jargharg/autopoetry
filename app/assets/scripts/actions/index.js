@@ -8,6 +8,7 @@ export const POEM_EDIT = "poem_edit"
 export const POEM_REFRESH = "poem_refresh"
 export const LINE_REFRESH = "line_refresh"
 export const HISTORY_EDIT = "history_edit"
+export const POEM_NEW = "poem_new"
 
 const ROOT_URL = "https://content.guardianapis.com/search?show-fields=body&q="
 const API_KEY = "&api-key=2c7e590d-dde8-498a-b351-b008c42edf52"
@@ -44,6 +45,12 @@ export function editHistory(direction) {
 export function editPoem() {
     return {
         type: POEM_EDIT
+    }
+}
+
+export function newPoem() {
+    return {
+        type: POEM_NEW
     }
 }
 

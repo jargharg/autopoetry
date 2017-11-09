@@ -3,30 +3,37 @@ import {
     POEM_LOADING,
     POEM_EDIT,
     POEM_REFRESH,
-    HISTORY_EDIT
+    HISTORY_EDIT,
+    POEM_NEW
 } from "../actions"
 
 export default function(state = { appState: "search" }, action) {
     switch (action.type) {
-        case POEM_SEARCH:
+        case HISTORY_EDIT:
             return {
                 ...state,
-                appState: "poem",
-                title: action.payload.title,
-                lines: action.payload.lines,
-                chosenLines: action.payload.chosenLines,
-                history: { prev: [], next: [] },
-                editMode: false
+                chosenLines: action.payload.newChosenLines,
+                history: action.payload.newHistory
+            }
+        case POEM_EDIT:
+            return {
+                ...state,
+                editMode: !state.editMode
             }
         case POEM_LOADING:
             return {
                 ...state,
                 appState: "loading"
             }
-        case POEM_EDIT:
+        case POEM_NEW:
             return {
                 ...state,
-                editMode: !state.editMode
+                appState: "search",
+                title: "",
+                lines: [],
+                chosenLines: [],
+                history: { prev: [], next: [] },
+                editMode: false
             }
         case POEM_REFRESH:
             return {
@@ -37,11 +44,15 @@ export default function(state = { appState: "search" }, action) {
                     next: []
                 }
             }
-        case HISTORY_EDIT:
+        case POEM_SEARCH:
             return {
                 ...state,
-                chosenLines: action.payload.newChosenLines,
-                history: action.payload.newHistory
+                appState: "poem",
+                title: action.payload.title,
+                lines: action.payload.lines,
+                chosenLines: action.payload.chosenLines,
+                history: { prev: [], next: [] },
+                editMode: false
             }
         default:
             return state
