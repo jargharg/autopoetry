@@ -6,39 +6,35 @@
 			visibility: visible;
 			z-index: 2;
 		}
+
 		&::before,
 		&::after {
 			opacity: 1;
 		}
-		.poem-line {
-			margin-bottom: 7px;
-			user-select: none;
-			&__text {
-				padding: 2px 10px;
-				min-height: 40px;
-				@mixin atMedium {
-					min-height: 20px;
-				}
-			}
-			&__refresh {
-				cursor: pointer;
-				opacity: 1;
-				visibility: visible;
-				z-index: 2;
-			}
-			&::before,
-			&::after {
-				opacity: 1;
+	}
+
+	.poem-line {
+		margin-bottom: 7px;
+		user-select: none;
+
+		&__text {
+			min-height: 40px;
+			padding: 2px 10px;
+			@mixin atMedium {
+				min-height: 20px;
 			}
 		}
-	}
-}
-@keyframes pulse {
-	from {
-		background: white;
-	}
-	to {
-		color: white;
-		background: $secondary-color-l1;
+
+		&__refresh {
+			cursor: pointer;
+			opacity: 1;
+			visibility: visible;
+			z-index: 2;
+		}
+		
+		&::before,
+		&::after {
+			opacity: 1;
+		}
 	}
 }

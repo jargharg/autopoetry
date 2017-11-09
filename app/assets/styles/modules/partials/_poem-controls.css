@@ -1,36 +1,49 @@
 .poem-controls {
-	padding: 10px 10px;
-	font-size: 1rem;
+	background: $primary-color;
+	bottom: 0;
+	color: $bg-color;
+	display: flex;
+	justify-content: space-between;
+	left: 0;
+	padding: 10px 0;
+	position: fixed;
+	user-select: none;
+	width: 100%;
+	z-index: 3;
+
 	@mixin atMedium {
-		display: flex;
-		font-size: 0.7rem;
-		justify-content: space-between;
+		background: none;
+		color: $primary-color;
+		left: 0px;
 		padding: 10px 20px;
-		line-height: 1;
 		position: absolute;
 		top: 100%;
 		width: 100%;
-		left: 0px;
 	}
+
 	a {
-		text-decoration: none;
-		color: $primary-color;
-		opacity: 0.4;
-		transition: all 0.2s;
+		color: inherit;
 		display: inline-block;
-		&:hover {
-			opacity: 1;
-		}
+		text-decoration: none;
 	}
 
 	&__icon {
-		height: 100%;
 		cursor: pointer;
-		user-select: none;
-		opacity: 0.4;
+		height: 100%;
+		margin: 0 10px;
 		transition: all 0.2s ease-out;
-		&:hover {
-			opacity: 1;
+
+		@mixin atMedium {
+			margin: 0;
+			opacity: 0.4;
+			&:hover {
+				opacity: 1;
+			}
+		}
+
+		&--hidden {
+			opacity: 0;
+			visibility: hidden;
 		}
 	}
 }

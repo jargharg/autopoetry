@@ -1,15 +1,15 @@
 .poem-header {
-	position: relative;
 	color: $primary-color;
 	padding: 0 20px 10px;
+	position: relative;
 
 	&__title {
+		display: inline-block;
 		font-size: 1.5rem;
-		text-transform: uppercase;
 		font-weight: 700;
 		letter-spacing: 2px;
 		margin: 0;
-		display: inline-block;
+		text-transform: uppercase;
 		transition: all 0.2s ease-out;
 		@mixin atMedium {
 			font-size: 2em;

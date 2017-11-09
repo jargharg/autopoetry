@@ -1,0 +1,97 @@
+.poem-line,
+.poem-body {
+    &__refresh {
+        color: $secondary-color;
+        cursor: pointer;
+        display: inline-block;
+        opacity: 0;
+        position: absolute;
+        transition: 0.2s all;
+        user-select: none;
+        visibility: hidden;
+        width: 50px;
+
+        @mixin atMedium {
+            &::after {
+                border-bottom: 2px solid $secondary-color;
+                content: " ";
+                position: absolute;
+                top: Calc(50% - 1px);
+                width: 22px;
+            }
+        }
+        i.material-icons {
+            font-size: 24px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    &::before {
+        border-bottom: 2px solid $secondary-color;
+        border-top: 2px solid $secondary-color;
+        bottom: 0;
+        content: " ";
+        opacity: 0;
+        padding: 2px;
+        position: absolute;
+        top: 0;
+        transition: 0.2s all;
+    }
+}
+
+.poem-line {
+    &__refresh {
+        height: 100%;
+        left: -17px;
+        text-align: left;
+        top: 0;
+        width: 50px;
+
+        &:hover ~ .poem-line__text {
+            background: $secondary-color;
+            color: white;
+        }
+
+        @mixin atMedium {
+            left: -40px;
+            &::after {
+                right: 0;
+            }
+        }
+    }
+    &::before {
+        border-left: 2px solid $secondary-color;
+        left: 10px;
+    }
+}
+
+.poem-body {
+    &__refresh {
+        height: 50px;
+        right: -17px;
+        text-align: right;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+
+        &:hover ~ .poem-line > .poem-line__text {
+            background: $secondary-color;
+            color: white;
+        }
+
+        @mixin atMedium {
+            right: -40px;
+            &::after {
+                left: 0;
+            }
+        }
+        i.material-icons {
+            right: 0;
+        }
+    }
+    &::before {
+        border-right: 2px solid $secondary-color;
+        right: 10px;
+    }
+}

@@ -1,9 +1,14 @@
 .input-form {
 	animation: fadeIn 0.3s ease-in-out forwards;
 	opacity: 0;
+	padding: 150px 50px;
 	position: relative;
 	transition: 0.1s all;
-	width: 60%;
+	width: 100%;
+	@mixin atMedium {
+		padding: 0;
+		width: 60%;
+	}
 	input {
 		background: transparent;
 		border: 0;
