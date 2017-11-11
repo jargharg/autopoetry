@@ -17,7 +17,6 @@ const API_KEY = "&api-key=2c7e590d-dde8-498a-b351-b008c42edf52"
 
 export function editHistory(direction) {
     return (dispatch, getState) => {
-        console.log(direction)
         const currentPoem = getState().poem
         const currentChosenLines = currentPoem.chosenLines
         let prev, next, newChosenLines
