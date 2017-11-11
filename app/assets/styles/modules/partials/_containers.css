@@ -3,8 +3,8 @@
 }
 
 .container {
-	border-left: 1px solid rgba(0, 0, 0, 0.05);
-	border-right: 1px solid rgba(0, 0, 0, 0.05);
+	border-left: 1px solid $grid-color;
+	border-right: 1px solid $grid-color;
 	height: 100%;
 	margin: 0 auto;
 	padding: 70px 0 0;
@@ -28,7 +28,7 @@
 	padding: 20px 0;
 		&::before,
 		&::after {
-			border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+			border-bottom: 1px solid $grid-color;
 			content: " ";
 			height: 1px;
 			left: -200%;

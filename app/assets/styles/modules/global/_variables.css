@@ -1,4 +1,15 @@
 $font-stack: "Source Code Pro", monospace;
+$font-weight: 400;
+$refresh-line-width: 2px;
+
 $bg-color: floralwhite;
-$primary-color: #000;
+$primary-color: black;
 $secondary-color: #FF6B20;
+$grid-color: rgba(0,0,0,0.05);
+
+/* INVERT COLORS
+
+$bg-color: black;
+$primary-color: floralwhite;
+$secondary-color: #FF6B20;
+$grid-color: rgba(255,255,255,0.1); */

@@ -11,7 +11,7 @@
 		&::before,
 		&::after {
 			content: "";
-			border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+			border-bottom: 1px solid $grid-color;
 			width: 500%;
 			position: absolute;
 			left: -200%;
@@ -27,10 +27,11 @@
 	input {
 		background: transparent;
 		border: 0;
+		color: $primary-color;
 		float: left;
 		font-family: $font-stack;
 		font-size: 1rem;
-		font-weight: 300;
+		font-weight: $font-weight;
 		letter-spacing: 0.2px;
 		line-height: 1;
 		outline: 0;
@@ -42,7 +43,7 @@
 		}
 		&[type="submit"] {
 			background: $primary-color;
-			color: white;
+			color: $bg-color;
 			cursor: pointer;
 			height: 40px;
 			&.input-form__submit-hidden {

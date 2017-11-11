@@ -1,7 +1,7 @@
 .top-nav {
-	border-bottom: 1px solid rgba(0,0,0,0.05);
+	border-bottom: 1px solid $grid-color;
 	color: $primary-color;
-	color: white;
+	color: $bg-color;
 	cursor: pointer;
 	left: 0;
 	opacity: 1;
@@ -40,7 +40,7 @@
 	}
 	&__details {
 		background: $primary-color;
-		color: #ffffff;
+		color: $bg-color;
 		font-size: 0.7em;
 		max-height: 0;
 		overflow: hidden;

@@ -13,7 +13,7 @@
 
         @mixin atMedium {
             &::after {
-                border-bottom: 1px solid $secondary-color;
+                border-bottom: $refresh-line-width solid $secondary-color;
                 content: " ";
                 position: absolute;
                 top: Calc(50% - 1px);
@@ -28,8 +28,8 @@
         }
     }
     &::before {
-        border-bottom: 1px solid $secondary-color;
-        border-top: 1px solid $secondary-color;
+        border-bottom: $refresh-line-width solid $secondary-color;
+        border-top: $refresh-line-width solid $secondary-color;
         bottom: 0;
         content: " ";
         opacity: 0;
@@ -50,7 +50,7 @@
 
         &:hover ~ .poem-line__text {
             background: $secondary-color;
-            color: white;
+            color: $bg-color;
         }
 
         @mixin atMedium {
@@ -61,7 +61,7 @@
         }
     }
     &::before {
-        border-left: 1px solid $secondary-color;
+        border-left: $refresh-line-width solid $secondary-color;
         left: 10px;
     }
 }
@@ -77,7 +77,7 @@
 
         &:hover ~ .poem-line > .poem-line__text {
             background: $secondary-color;
-            color: white;
+            color: $bg-color;
         }
 
         @mixin atMedium {
@@ -91,7 +91,7 @@
         }
     }
     &::before {
-        border-right: 1px solid $secondary-color;
+        border-right: $refresh-line-width solid $secondary-color;
         right: 10px;
     }
 }
