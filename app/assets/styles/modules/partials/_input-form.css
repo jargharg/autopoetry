@@ -43,6 +43,7 @@
 		}
 		&[type="submit"] {
 			background: $primary-color;
+			border-radius: 0;
 			color: $bg-color;
 			cursor: pointer;
 			height: 40px;
@@ -51,14 +52,5 @@
 				height: 0;
 			}
 		}
-	}
-}
-
-@keyframes fadeIn {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
 	}
 }

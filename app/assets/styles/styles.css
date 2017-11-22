@@ -1,6 +1,7 @@
 @import "normalize.css";
 @import "modules/global/_variables.css";
 @import "modules/global/_mixins.css";
+@import "modules/global/_animations.css";
 @import "modules/partials/_body.css";
 @import "modules/partials/_top-nav.css";
 @import "modules/partials/_containers.css";
