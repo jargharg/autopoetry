@@ -42,6 +42,7 @@ class PoemControls extends Component {
                         this.props.lines,
                         this.props.chosenLines
                     )}
+                    title="Share to WhatsApp"
                 >
                     <i className="material-icons md-48">share</i>
                 </a>
@@ -49,6 +50,7 @@ class PoemControls extends Component {
                     <span
                         className={"poem-controls__icon" + this.state.undoClass}
                         onClick={() => this.props.editHistory("undo")}
+                        title="Undo action"
                     >
                         <i className="material-icons md-48">undo</i>
                     </span>
@@ -57,12 +59,14 @@ class PoemControls extends Component {
                             "poem-controls__icon" + this.state.newPoemClass
                         }
                         onClick={() => this.props.newPoem()}
+                        title="New poem"
                     >
                         <i className="material-icons md-48">refresh</i>
                     </span>
                     <span
                         className={"poem-controls__icon" + this.state.redoClass}
                         onClick={() => this.props.editHistory("redo")}
+                        title="Redo action"
                     >
                         <i className="material-icons md-48">redo</i>
                     </span>
@@ -71,6 +75,7 @@ class PoemControls extends Component {
                     className="poem-controls__icon"
                     id="poemEdit"
                     onClick={() => this.props.editPoem()}
+                    title="Edit poem"
                 >
                     <i className="material-icons md-48">
                         {this.state.editModeIcon}
