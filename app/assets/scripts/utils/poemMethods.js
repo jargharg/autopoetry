@@ -32,15 +32,17 @@ export function parseData(data) {
         }
     })
 
+    // split up the last few lines into single words
+    const singleWords = tidyContent.splice(-20, 20).forEach(line => {
+        const splitLine = line.split(" ")
+        tidyContent.push(...splitLine)
+    })
+
     const capitalisedContent = tidyContent.map(
         str => str.charAt(0).toUpperCase() + str.slice(1)
     )
 
     return capitalisedContent
-}
-
-export function createPoem(poemLines) {
-    const poemArray = poemMethods.newPoem(poemLines)
 }
 
 export function shuffle(array) {
@@ -68,7 +70,9 @@ export function chooseLines(lines) {
         randomArray.push(randomLineIndex(lines))
     }
 
-    const poemArray = randomArray // this can have more exciting methods in the future
+    const poemArray = randomArray
+    // this can have more exciting methods in the future
+    // check to make sure there's no "the / of" etc
 
     return poemArray
 }
