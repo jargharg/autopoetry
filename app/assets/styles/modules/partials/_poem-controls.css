@@ -41,9 +41,26 @@
 			}
 		}
 
+		&__caption {
+			font-size: 0.75em;
+			opacity: 0;
+			overflow: hidden;
+			padding-left: 7px;
+			position: absolute;
+			transform: translateY(50%);
+			transition: opacity 0.2s ease-out;
+			top: 50%;
+			width: 0;
+		}
+
 		&--hidden {
 			opacity: 0;
 			visibility: hidden;
+		}
+
+		&:hover .poem-controls__icon__caption {
+			opacity: 1;
+			width: auto;
 		}
 	}
 }

@@ -35,17 +35,22 @@ class PoemControls extends Component {
     render() {
         return (
             <div className="poem-controls">
-                <a
-                    className="poem-controls__icon"
-                    href={shareLink(
-                        this.props.title,
-                        this.props.lines,
-                        this.props.chosenLines
-                    )}
-                    title="Share to WhatsApp"
-                >
-                    <i className="material-icons md-48">share</i>
-                </a>
+                <span className="poem-controls__icon">
+                    <a
+                        className=""
+                        href={shareLink(
+                            this.props.title,
+                            this.props.lines,
+                            this.props.chosenLines
+                        )}
+                        title="Share to WhatsApp"
+                    >
+                        <i className="material-icons md-48">share</i>
+                        <span className="poem-controls__icon__caption">
+                            Share to WhatsApp
+                        </span>
+                    </a>
+                </span>
                 <span>
                     <span
                         className={"poem-controls__icon" + this.state.undoClass}
@@ -62,6 +67,9 @@ class PoemControls extends Component {
                         title="New poem"
                     >
                         <i className="material-icons md-48">refresh</i>
+                        <span className="poem-controls__icon__caption">
+                            New poem
+                        </span>
                     </span>
                     <span
                         className={"poem-controls__icon" + this.state.redoClass}
